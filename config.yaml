@@ -1,4 +1,4 @@
-nginx_version: 1.17.9
+nginx_version: 1.17.1
 output_package: deb
 modules:
   - module:

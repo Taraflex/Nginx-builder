@@ -26,7 +26,6 @@ jobs:
         run: sudo apt-get install -y locales wget build-essential autogen automake autoconf autotools-dev libreadline-dev libncurses5-dev libpcre3 libpcre3-dev libpng-dev dh-make quilt lsb-release debhelper dpkg-dev dh-systemd pkg-config zlib1g-dev libssl-dev openssl git perl libtool tar unzip xutils-dev python3-apt
       - name: Install python dependencies
         run: |
-          sudo python -m pip install --upgrade pip
           sudo pip3 install -r requirements.txt
       - name: Build
         run: |

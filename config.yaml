@@ -1,9 +1,12 @@
-nginx_version: 1.17.1
+nginx_version: 1.18.0
 output_package: deb
 modules:
-  - module:
-      name: ngx_http_proxy_connect_module
-      patch: ./proxy_connect_rewrite_1018.patch
-      git_url: https://github.com/chobits/ngx_http_proxy_connect_module.git
+  - module: 
+      name: ngx_security_headers
+      git_url: https://github.com/GetPageSpeed/ngx_security_headers.git
+#  - module:
+#      name: ngx_http_proxy_connect_module
+#      patch: ./proxy_connect_rewrite_1018.patch
+#      git_url: https://github.com/chobits/ngx_http_proxy_connect_module.git
 configure_params:
   - "--with-openssl-opt='enable-tls1_3'"

@@ -18,7 +18,7 @@ DEB_PACKAGE_SCRIPTS_URL_MAINLINE = "http://nginx.org/packages/mainline/{}/pool/n
 DEB_PACKAGE_SCRIPTS_URL_STABLE = "http://nginx.org/packages/{}/pool/nginx/n/nginx".format(OS_DISTRIBUTION)
 
 # Путь до директории сборки пакета
-SRC_PATH = "/home/src/nginx"
+SRC_PATH = "/usr/src/nginx"
 
 # Error build code
 DPKG_FAIL_EXIT_CODE = 29

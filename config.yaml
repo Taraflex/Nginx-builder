@@ -4,9 +4,9 @@ modules:
   - module: 
       name: ngx_security_headers
       git_url: https://github.com/GetPageSpeed/ngx_security_headers.git
-  - module:
-      name: naxsi
-      local_url: ./naxsi.zip
+#  - module:
+#      name: naxsi
+#      local_url: ./naxsi.zip
 #  - module:
 #      name: ngx_http_proxy_connect_module
 #      patch: ./proxy_connect_rewrite_1018.patch

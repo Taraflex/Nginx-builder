@@ -13,7 +13,7 @@ jobs:
   # when a job name is not provided
   build-deb:
     name: build deb
-    runs-on: cent-os-7
+    runs-on: ubuntu-18.04
 
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
@@ -27,4 +27,4 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install -r requirements.txt
       - name: Build
-        run: ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER
+        run: mkdir -p /usr/src/nginx/modules && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER

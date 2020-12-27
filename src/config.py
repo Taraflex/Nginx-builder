@@ -35,6 +35,8 @@ DEFAULT_CONFIGURE_PARAMS = [
     "--http-log-path=/var/log/nginx/access.log",
     "--http-client-body-temp-path=/var/cache/nginx/client_temp",
     "--http-proxy-temp-path=/var/cache/nginx/proxy_temp",
+    "--user=www-data",
+    "--group=www-data",
     "--without-http_geo_module",
     "--without-http_autoindex_module",
     "--without-http_empty_gif_module",

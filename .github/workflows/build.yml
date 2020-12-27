@@ -8,7 +8,7 @@ jobs:
   # when a job name is not provided
   build-deb:
     name: build deb
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
 
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine

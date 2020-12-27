@@ -35,17 +35,24 @@ DEFAULT_CONFIGURE_PARAMS = [
     "--http-log-path=/var/log/nginx/access.log",
     "--http-client-body-temp-path=/var/cache/nginx/client_temp",
     "--http-proxy-temp-path=/var/cache/nginx/proxy_temp",
-    "--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp",
-    "--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp",
-    "--http-scgi-temp-path=/var/cache/nginx/scgi_temp",
-    "--with-debug",
-    "--user=nginx",
-    "--group=nginx",
+    "--without-http_geo_module",
+    "--without-http_autoindex_module",
+    "--without-http_empty_gif_module",
+    "--without-http_fastcgi_module",
+    "--without-http_memcached_module",
+    "--without-http_scgi_module",
+    "--without-http_split_clients_module",
+    "--without-http_uwsgi_module",
+    "--with-http_gunzip_module",
+    "--with-http_gzip_static_module",
+    "--with-http_realip_module",
+    "--with-http_ssl_module",
     "--with-pcre-jit",
     "--with-compat",
     "--with-file-aio",
     "--with-threads",
     "--with-stream",
+    "--with-stream_ssl_module",
     "--with-cc-opt=\"${CFLAGS}\"",
     "--with-ld-opt=\"${LDFLAGS}\""
 ]
@@ -54,7 +61,7 @@ DEFAULT_CONFIGURE_PARAMS = [
 MODULESDIR = 'export MODULESDIR = $(CURDIR)/debian/modules'
 
 # Адрес эл. почты для указания при сборке
-EMAIL_CREATOR = "nginx-builder@tinkoff.ru"
+EMAIL_CREATOR = "taraflex.red@gmail.com"
 
 # Тип лицензии для указания при сборке
 LICENSE_TYPE = "gpl"

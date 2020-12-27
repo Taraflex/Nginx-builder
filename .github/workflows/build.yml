@@ -3,10 +3,10 @@ name: build deb
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   # Set the job key. The key is displayed as the job name

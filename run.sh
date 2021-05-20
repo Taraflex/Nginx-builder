@@ -1,0 +1,1 @@
+rm -rf /usr/src/nginx && ./main.py build -f config.yaml

@@ -25,3 +25,9 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Build
         run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && mkdir -p /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER
+      - name: Archive *.deb package
+        uses: actions/upload-artifact@v2
+        with:
+          name: deb package
+          path: |
+            *.deb

@@ -25,17 +25,11 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Build
         run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER
-      - name: Archive *.deb package
-        uses: actions/upload-artifact@v2
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: nginx
-          if-no-files-found: error
-          path: |
+          fail_on_unmatched_files: true
+          files: |
             *.deb
-      - name: Upload the artifacts
-        uses: skx/github-action-publish-binaries@release-0.15
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          releaseId: $GITHUB_RUN_NUMBER
-          args: 'nginx*'

@@ -37,7 +37,7 @@ def build_deb(version, src_archive_name, downloaded_modules,
     scripts_dir = os.path.join(source_dir, "debian")
     modules_dir = os.path.join(scripts_dir, "modules")
 
-    apply_patch(modules_dir, source_dir, patches)
+    apply_patch(source_dir, patches)
     prepare_changelog(scripts_dir, version, revision)
     prepare_rules(scripts_dir, downloaded_modules, configure_params)
     prepare_nginx_dirs(scripts_dir)
@@ -249,15 +249,14 @@ def merge_dicts(control_file_dict, control_changes_dict):
     return control_file_dict
 
 
-def apply_patch(modules_dir, source_dir, patches):
+def apply_patch(source_dir, patches):
     """
     Применение патча
-    :param modules_dir:
     :param source_dir:
     :param patches:
     :return:
     """
     for patch in patches:
         logger.info("Apply patch {}".format(patch))
-        patch_command = "patch -p1 < {}".format(os.path.join(modules_dir, patch))
+        patch_command = "patch -p1 < {}".format(os.abspath(patch))
         common_utils.execute_command(patch_command, source_dir)

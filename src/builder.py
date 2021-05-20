@@ -258,5 +258,5 @@ def apply_patch(source_dir, patches):
     """
     for patch in patches:
         logger.info("Apply patch {}".format(patch))
-        patch_command = "patch -p1 < {}".format(os.abspath(patch))
+        patch_command = "patch -p1 < {}".format(os.path.abspath(patch))
         common_utils.execute_command(patch_command, source_dir)

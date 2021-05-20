@@ -26,10 +26,10 @@ jobs:
       - name: Build
         run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER && DEB=$(find *.deb -type f | tail -n 1) && echo "DEB=$DEB" >> $GITHUB_ENV
       - name: Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: "ncipollo/release-action@v1.8.5"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "${{ env.DEB }}"
-          files: "${{ env.DEB }}"
+          artifactErrorsFailBuild: true
+          artifacts: "${{ env.DEB }}"
+          body: "wget https://github.com/$GITHUB_REPOSITORY/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
+          name: "${{ env.DEB }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"

@@ -9,14 +9,11 @@ on:
       - master
 
 jobs:
-  # Set the job key. The key is displayed as the job name
-  # when a job name is not provided
   build-deb:
     name: build deb
     runs-on: ubuntu-18.04
 
     steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
       - uses: actions/checkout@v2
       - name: Set up Python 
         uses: actions/setup-python@v2
@@ -27,4 +24,4 @@ jobs:
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build
-        run: mkdir -p /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER
+        run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && mkdir -p /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER

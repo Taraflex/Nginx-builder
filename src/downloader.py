@@ -335,7 +335,7 @@ def set_module_name(module_name, url):
     return module_name
 
 
-def get_patches_list(modules):
+def get_patches_list(config_dir, modules):
     """
     Получение списка патчей
     :param modules:
@@ -347,6 +347,6 @@ def get_patches_list(modules):
         for module in modules:
             module = module.get('module')
             if module.get('patch') is not None:
-                nginx_patches.append(os.path.join(module.get('name'), module.get('patch')))
+                nginx_patches.append(os.path.normpath(os.path.join(config_dir, module.get('patch'))))
 
     return nginx_patches

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
 import sys
 from src import config_parser
 from src import downloader
@@ -20,7 +21,7 @@ def build(args):
     config = config_parser.parse_yaml(args.file)
     package_name = None
     if config["output_package"] == "deb":
-        package_name = build_deb(config, args.revision)
+        package_name = build_deb(os.path.dirname(os.path.abspath(args.file)) + "/", config, args.revision)
     elif config["output_package"] == "rpm":
         package_name = build_rpm(config, args.revision)
     else:
@@ -29,7 +30,7 @@ def build(args):
     publicator.public_local(package_name)
 
 
-def build_deb(config, revision):
+def build_deb(config_dir, config, revision):
     """
     Сборка deb пакета
     :param config:
@@ -40,7 +41,7 @@ def build_deb(config, revision):
     src_archive_name = downloader.download_source(config["nginx_version"])
     downloaded_modules = downloader.download_modules(config["modules"])
     downloader.download_dependencies_deb(config["modules"])
-    patches = downloader.get_patches_list(config["modules"])
+    patches = downloader.get_patches_list(config_dir, config["modules"])
     package_name = builder.build_deb(
         config["nginx_version"],
         src_archive_name,

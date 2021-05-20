@@ -26,7 +26,7 @@ jobs:
       - name: Build
         run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.5
         with:
           fail_on_unmatched_files: true
           files: |

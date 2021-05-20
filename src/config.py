@@ -38,7 +38,7 @@ DEFAULT_CONFIGURE_PARAMS = [
     "--user=www-data",
     "--group=www-data",
     "--with-http_realip_module",
-    "--with-pcre-jit",
+    #"--with-pcre-jit",
     "--with-threads",
     "--with-cc-opt=\"${CFLAGS}\"",
     "--with-ld-opt=\"${LDFLAGS}\""

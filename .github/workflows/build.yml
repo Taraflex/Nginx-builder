@@ -32,4 +32,5 @@ jobs:
           artifacts: "${{ env.DEB }}"
           body: "wget https://github.com/$GITHUB_REPOSITORY/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
           name: "${{ env.DEB }}"
+          tag: "latest"
           token: "${{ secrets.GITHUB_TOKEN }}"

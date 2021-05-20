@@ -28,9 +28,10 @@ jobs:
       - name: Release
         uses: "ncipollo/release-action@v1.8.5"
         with:
+          allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: "${{ env.DEB }}"
-          body: "wget https://github.com/$GITHUB_REPOSITORY/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
+          body: "wget $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
           name: "${{ env.DEB }}"
           tag: "latest"
           token: "${{ secrets.GITHUB_TOKEN }}"

@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python 
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
       - name: Install soft 
         run: sudo apt-get install -y locales wget build-essential autogen automake autoconf autotools-dev libgd-dev libreadline-dev libncurses5-dev libpcre3 libpcre3-dev libpng-dev dh-make quilt lsb-release debhelper dpkg-dev dh-systemd pkg-config zlib1g-dev libssl-dev openssl git perl libtool tar unzip xutils-dev python3-apt
       - name: Install python dependencies
@@ -31,7 +31,7 @@ jobs:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: "${{ env.DEB }}"
-          body: "wget $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
+          body: "wget ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
           name: "${{ env.DEB }}"
           tag: "latest"
           token: "${{ secrets.GITHUB_TOKEN }}"

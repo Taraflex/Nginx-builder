@@ -24,14 +24,14 @@ jobs:
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build
-        run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER && DEB=$(find *.deb -type f | tail -n 1) && echo "DEB=$DEB" >> $GITHUB_ENV
+        run: sudo mkdir -p /usr/src/nginx/modules && sudo chmod -R 777 /usr/src/nginx && ./main.py build -f config.yaml -r $GITHUB_RUN_NUMBER && DEB=$(find *.deb -type f | tail -n 1) && echo "DEB=$DEB" >> $GITHUB_ENV && echo "RELEASE_ASSET_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/latest/$DEB" >> $GITHUB_ENV
       - name: Release
         uses: "ncipollo/release-action@v1.8.5"
         with:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: "${{ env.DEB }}"
-          body: "wget ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/releases/download/latest/${{ env.DEB }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
+          body: "wget ${{ env.RELEASE_ASSET_URL }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
           name: "${{ env.DEB }}"
           tag: "latest"
           token: "${{ secrets.GITHUB_TOKEN }}"

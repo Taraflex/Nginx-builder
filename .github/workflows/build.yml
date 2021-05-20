@@ -31,7 +31,7 @@ jobs:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: "${{ env.DEB }}"
-          body: "wget ${{ env.RELEASE_ASSET_URL }} && gdebi ${{ env.DEB }} && rm ${{ env.DEB }}"
+          body: "wget -N ${{ env.RELEASE_ASSET_URL }} && gdebi ${{ env.DEB }}"
           name: "${{ env.DEB }}"
           tag: "latest"
           token: "${{ secrets.GITHUB_TOKEN }}"

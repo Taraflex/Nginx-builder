@@ -10,7 +10,6 @@ modules:
       git_url: https://github.com/chobits/ngx_http_proxy_connect_module.git
 configure_params:
   - "--with-openssl-opt='enable-tls1_3'"
-  - "--with-http_image_filter_module"
   - "--with-http_ssl_module"
   - "--with-file-aio"
   - "--with-http_mp4_module"
@@ -22,3 +21,4 @@ configure_params:
   - "--without-http_fastcgi_module"
   - "--without-http_uwsgi_module"
   - "--without-http_scgi_module"
+  - "--without-http_image_filter_module"

@@ -11,7 +11,7 @@ on:
 jobs:
   build-deb:
     name: build deb
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: 3.9
       - name: Install soft 
-        run: sudo apt-get install -y locales wget build-essential autogen automake autoconf autotools-dev libgd-dev libreadline-dev libncurses5-dev libpcre3 libpcre3-dev libpng-dev dh-make quilt lsb-release debhelper dpkg-dev pkg-config zlib1g-dev libssl-dev openssl git perl libtool tar unzip xutils-dev python3-apt
+        run: sudo apt-get install -y locales wget build-essential autogen automake autoconf autotools-dev libgd-dev libreadline-dev libncurses5-dev libpcre3 libpcre3-dev libpng-dev dh-make quilt lsb-release debhelper dpkg-dev dh-systemd pkg-config zlib1g-dev libssl-dev openssl git perl libtool tar unzip xutils-dev python3-apt
       - name: Install python dependencies
         run: pip3 install -r requirements.txt
       - name: Build

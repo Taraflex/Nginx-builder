@@ -21,4 +21,3 @@ configure_params:
   - "--without-http_fastcgi_module"
   - "--without-http_uwsgi_module"
   - "--without-http_scgi_module"
-  - "--without-http_image_filter_module"
